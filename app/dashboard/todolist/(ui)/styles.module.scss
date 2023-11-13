@@ -1,0 +1,51 @@
+.todo_status {
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+.todo_table {
+    display: flex;
+    flex-direction: column;
+    gap:6px;
+    li {
+        border: 1px solid #E0F2Fe;   
+        padding: 16px 10px 16px 10px;
+        border-radius: 5px;
+        font-weight: 500;
+        font-size: 14px;
+        &:hover {
+            background-color: #E0F2Fe;
+            color:#2563eb;
+       }
+    }
+    margin-bottom: 30px;
+}
+.pending_table {
+    li {
+        border: 1px solid #d2d2d2;   
+        &:hover {
+            background-color: #d2d2d2;
+            color:#000000;
+       }
+    }
+
+}
+
+.complete_table {
+    li {
+        border: 1px solid #8fb298;   
+        &:hover {
+            background-color: #8fb298;
+            color:#018f4d;
+       }
+    }
+}
+
+@media (min-width:768px) {
+    .table_wrap{
+        display: flex;
+        gap:40px;
+        ul {
+            flex-grow: 1;
+        }
+    }
+}
