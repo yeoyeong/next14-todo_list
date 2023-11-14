@@ -1,7 +1,10 @@
 "use client";
-import { fetchTodolist } from "@/app/lib/server/get-data";
 import styles from "./styles.module.scss";
 import { useEffect, useState } from "react";
+import { updateTodoState } from "@/app/lib/server/actions";
+import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
+import TodoButtonWrap from "./todo-buttonWrap";
+import TodoEditForm from "./todo-editForm";
 
 type todo = {
   id: string;
@@ -12,8 +15,8 @@ type todo = {
   date: Date;
 };
 export default function Table({ todolist }: { todolist: todo[] }) {
+  const [editMode, setEditMode] = useState("");
   const [tasks, setTasks] = useState<todo[]>([]);
-  console.log(todolist);
   useEffect(() => {
     setTasks(todolist);
   }, [todolist]);
@@ -56,7 +59,10 @@ export default function Table({ todolist }: { todolist: todo[] }) {
     evt.currentTarget.classList.remove("dragged-over");
     let data = evt.dataTransfer.getData("text/plain");
     let updated = tasks.map((task) => {
-      if (task.id == data) task.status = value;
+      if (task.id == data) {
+        task.status = value;
+        updateTodoState(task.id, value);
+      }
       return task;
     });
     setTasks(updated);
@@ -65,6 +71,12 @@ export default function Table({ todolist }: { todolist: todo[] }) {
   const pending = tasks.filter((item) => item.status === "pending");
   const Proceeding = tasks.filter((item) => item.status === "Proceeding");
   const complete = tasks.filter((item) => item.status === "complete");
+
+  // const updateInvoiceWithId = updateInvoice.bind(null, invoice.id);
+
+  // useEffect(() => {
+  //   updateInvoiceWithId;
+  // }, [tasks]);
 
   return (
     <div className={styles.table_wrap}>
@@ -86,7 +98,21 @@ export default function Table({ todolist }: { todolist: todo[] }) {
               onDragStart={(e) => onDragStart(e)}
               onDragEnd={(e) => onDragEnd(e)}
             >
-              {item.title}
+              {editMode === item.id && (
+                <TodoEditForm
+                  id={item.id}
+                  title={item.title}
+                  detail={item.detail}
+                />
+              )}
+              {editMode !== item.id && (
+                <span>
+                  {item.title}
+                  <span className={styles.detail}>{item.detail}</span>
+                </span>
+              )}
+
+              <TodoButtonWrap id={item.id} setEditMode={setEditMode} />
             </li>
           ))}
       </ul>
@@ -108,7 +134,19 @@ export default function Table({ todolist }: { todolist: todo[] }) {
               onDragStart={(e) => onDragStart(e)}
               onDragEnd={(e) => onDragEnd(e)}
             >
-              {item.title}
+              {editMode === item.id && (
+                <TodoEditForm
+                  id={item.id}
+                  title={item.title}
+                  detail={item.detail}
+                />
+              )}
+              {editMode !== item.id && (
+                <span>
+                  {item.title}
+                  <span className={styles.detail}>{item.detail}</span>
+                </span>
+              )}
             </li>
           ))}
       </ul>
@@ -130,7 +168,19 @@ export default function Table({ todolist }: { todolist: todo[] }) {
               onDragStart={(e) => onDragStart(e)}
               onDragEnd={(e) => onDragEnd(e)}
             >
-              {item.title}
+              {editMode === item.id && (
+                <TodoEditForm
+                  id={item.id}
+                  title={item.title}
+                  detail={item.detail}
+                />
+              )}
+              {editMode !== item.id && (
+                <span>
+                  {item.title}
+                  <span className={styles.detail}>{item.detail}</span>
+                </span>
+              )}
             </li>
           ))}
       </ul>

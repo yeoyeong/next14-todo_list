@@ -6,19 +6,48 @@
     display: flex;
     flex-direction: column;
     gap:6px;
+    min-height: 60px;
     li {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
         border: 1px solid #E0F2Fe;   
         padding: 16px 10px 16px 10px;
         border-radius: 5px;
         font-weight: 500;
-        font-size: 14px;
+        font-size: 16px;
+        
         &:hover {
             background-color: #E0F2Fe;
             color:#2563eb;
+            .button_wrap{
+                display: flex;
+            }
+            .detail {
+                display: block;
+            }
+            input {
+                background-color: #ffffff67;
+            }
        }
     }
+    .detail {
+        display: none;
+        margin-top: 4px;
+        color:rgb(251, 251, 251);
+        font-size:15px;
+        font-weight: 400;
+    }
     margin-bottom: 30px;
+    .button_wrap {
+        gap:10px;
+        color:#2563eb;
+        display:none ;
+    }
 }
+
+
+
 .pending_table {
     li {
         border: 1px solid #d2d2d2;   
@@ -40,6 +69,50 @@
     }
 }
 
+
+.create_form_wrap {
+    display: flex;
+    justify-content:flex-end;
+    gap:6px;
+    > div {
+        display: flex;
+        flex-direction: column;
+        gap:2px;
+    }
+    input {
+        border : 1px solid rgb(214, 214, 214);
+        padding:0 6px;
+        height:40px;
+        border-radius: 5px;
+    }
+    button {
+        background-color: #2563eb;
+        color:#fff;
+        height:82px;
+        width: 62px;
+        border-radius:5px;
+    }
+}
+.edit_form_wrap {
+    display: flex;
+    height: 100%;
+    gap:10px;
+    input {
+        // display: block;
+        padding:4px;
+        padding-left: 6px;
+        height: 100%;
+        background-color: #E0F2Fe;
+        border-radius: 5px;
+    }
+    button {
+        padding:4px;
+        background-color: rgb(199, 199, 199);
+        color:white;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+}
 @media (min-width:768px) {
     .table_wrap{
         display: flex;
