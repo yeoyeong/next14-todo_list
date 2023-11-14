@@ -103,6 +103,7 @@ export default function Table({ todolist }: { todolist: todo[] }) {
                   id={item.id}
                   title={item.title}
                   detail={item.detail}
+                  setEditMode={setEditMode}
                 />
               )}
               {editMode !== item.id && (
@@ -111,7 +112,6 @@ export default function Table({ todolist }: { todolist: todo[] }) {
                   <span className={styles.detail}>{item.detail}</span>
                 </span>
               )}
-
               <TodoButtonWrap id={item.id} setEditMode={setEditMode} />
             </li>
           ))}
@@ -139,6 +139,7 @@ export default function Table({ todolist }: { todolist: todo[] }) {
                   id={item.id}
                   title={item.title}
                   detail={item.detail}
+                  setEditMode={setEditMode}
                 />
               )}
               {editMode !== item.id && (
@@ -147,6 +148,7 @@ export default function Table({ todolist }: { todolist: todo[] }) {
                   <span className={styles.detail}>{item.detail}</span>
                 </span>
               )}
+              <TodoButtonWrap id={item.id} setEditMode={setEditMode} />
             </li>
           ))}
       </ul>
@@ -173,6 +175,7 @@ export default function Table({ todolist }: { todolist: todo[] }) {
                   id={item.id}
                   title={item.title}
                   detail={item.detail}
+                  setEditMode={setEditMode}
                 />
               )}
               {editMode !== item.id && (
@@ -181,6 +184,7 @@ export default function Table({ todolist }: { todolist: todo[] }) {
                   <span className={styles.detail}>{item.detail}</span>
                 </span>
               )}
+              <TodoButtonWrap id={item.id} setEditMode={setEditMode} />
             </li>
           ))}
       </ul>

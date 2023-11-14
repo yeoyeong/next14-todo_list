@@ -107,8 +107,7 @@ export async function updateTodo(id: string, formData: FormData) {
     return { message: "Database Error: Failed to Update Invoice." };
   }
 
-  // revalidatePath("/dashboard/todolist");
-  // redirect("/dashboard/invoices");
+  revalidatePath("/dashboard/todolist");
 }
 
 //배열 상태 업데이트

@@ -3,15 +3,14 @@ import { createTodo } from "@/app/lib/server/actions";
 import styles from "./styles.module.scss";
 
 const TodoCreateForm = ({ userId }: { userId: number }) => {
-  const createTodoWithId = createTodo.bind(null, userId);
-
   return (
     <form
-      action={createTodoWithId}
       onSubmit={async (e) => {
         e.preventDefault();
-        await createTodoWithId;
+
         const form = e.target as HTMLFormElement;
+        const formData = new FormData(form);
+        await createTodo(userId, formData);
         form.reset();
       }}
       className={styles.create_form_wrap}
